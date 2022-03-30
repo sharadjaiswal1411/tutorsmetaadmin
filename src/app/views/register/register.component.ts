@@ -29,8 +29,13 @@ export class RegisterComponent {
   alertMessage:any;
   registerForm = new FormGroup({
     
+    name: new FormControl(''),
     email: new FormControl(''),
+    phoneCode: new FormControl(''),
+    mobileNumber: new FormControl(''),
+    role: new FormControl(''),
     password: new FormControl(''),
+    repeatpassword: new FormControl('')
     
   })
   
@@ -39,16 +44,124 @@ export class RegisterComponent {
   {
     
       this.registerForm = fb.group({
+        name: ["", Validators.required],
           email: ["", Validators.required
           //,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)
         ],
-          password: ["", Validators.required]
+        phoneCode: ["", Validators.required],
+        mobileNumber: ["", Validators.required],
+        role: ["", Validators.required],
+        password: ["", Validators.required],
+        repeatpassword: ["", Validators.required]
       });
       //public router: Router
   }
 
   onRegister(){
     console.log("regiiiii");
+    const data = this.registerForm.value;
+    console.log(this.registerForm.value);
+    this.loading = true;
+    //this.signin(data.email, data.password)
+
+
+    if(data.password!=data.repeatpassword)
+    {
+      return alert(" Ooh No! Password can't match.");
+      
+    }
+    this.register(data.name,data.email, data.phoneCode,data.mobileNumber,data.role,data.password)
+    
+  
+    .subscribe (
+      res => {
+        // set auth data here with token
+        // if signin success then:
+  
+        console.log('responce',res);
+        if (res.status == true) {
+          
+          console.log('responce',res);
+          if(res.result.data.roleId.name=="ADMIN"){
+           
+            localStorage.setItem("Token_Daily_Neevesh", res.result.data.accessToken)
+            localStorage.setItem("USER_Id", res.result.data._id)
+            localStorage.setItem("USER_TYPE", res.result.data.roleId.name)
+            localStorage.setItem("USER_NAME", res.result.data.name)
+            localStorage.setItem("USER_IMAGE", res.result.data.image)
+            localStorage.setItem("loggedIn", "true")
+            window.location.href = 'http://localhost:4200/#/dashboard';
+            this.setUser(res.result.data.name,res.result.data.name,res.result.data.image,res.result.data.email)
+                this.router.navigate(['dashboards']);
+                  
+  
+  
+          // setTimeout(window.location.href = 'http://localhost:4200/#/dashboard', 5000);
+        }
+          if(res.result.data.roleId.name=="ADVISOR"){
+            localStorage.setItem("Token_Daily_Neevesh", res.result.data.accessToken)
+            localStorage.setItem("USER_Id", res.result.data._id)
+            localStorage.setItem("USER_TYPE", res.result.data.roleId.name)
+            localStorage.setItem("USER_NAME", res.result.data.name)
+            localStorage.setItem("mobile_verified", res.result.data.mobile_verified)
+            localStorage.setItem("USER_IMAGE", res.result.data.image)
+            localStorage.setItem("loggedIn", "true")
+  
+                  this.router.navigate(['dashboards/ecommerce']);
+                  console.log('responce',res);
+          }
+          if(res.result.data.roleId.name=="USER"){
+            
+            // this.dialog.open(AlertTemplateComponent, {
+            //   data: {
+            //     iconType: 'error',000000
+            //     title: "Invalid email or password",
+            //     button: 'Ok'
+            //   },
+            //   autoFocus: false
+            // });
+          }
+  
+          this.setUser(res.result.data.name,res.result.data.name,res.result.data.image,res.result.data.email)
+          
+  
+        } else {
+         
+          this.loading = false;
+          // this.dialog.open(AlertTemplateComponent, {
+          //   data: {
+          //     iconType: 'error',
+          //     title: res.result.message,
+          //     button: 'Ok'
+          //   },
+          //   autoFocus: false
+          // });
+          this.alertMessage = res.result.message
+        }
+  
+  
+        
+      },
+      err => {
+        // this.dialog.open(AlertTemplateComponent, {
+        //   data: {
+        //     iconType: 'error',
+        //     title: 'Invalid User Email Or Password',
+        //     button: 'Ok'
+        //   },
+        //   autoFocus: false
+        // });
+        this.loading = false;
+        this.alertMessage = "Invalid User Email Or Password"
+  
+  
+        // else if signin fails
+        // show error
+  
+  
+  
+      }
+    );
   }
 
   
@@ -151,6 +264,27 @@ export class RegisterComponent {
 }
 
 
+register(name:string,email: string,phoneCode:string,mobileNumber:string, role:string,password: string): Observable<any> {
+
+
+
+    // get role id
+  
+      this.setUser();
+      console.log("hii",name);
+      return this.http.get<any>(environment.API_URL+'auth/test');
+    
+    
+    // display string message
+
+//  return this.http.post<any>(environment.API_URL+'auth/register',{name:name,email:email,phoneCode:phoneCode,mobileNumber:mobileNumber,roleId:role,password:password});
+
+ 
+  // your log in logic should go here
+ // this.loggedUserSubject.next(this.loggedUser);
+ // return of(true);
+    
+}
  
  signin(email: string, password: string): Observable<any> {
   this.setUser();
@@ -162,13 +296,16 @@ export class RegisterComponent {
  // this.loggedUserSubject.next(this.loggedUser);
  // return of(true);
 }
-setUser(name: string = 'Alex', lastname: string = 'Martins', image: string = '/assets/imgs/users/user-8.jpeg', email: string = 'alex.martins@example.com') {
+setUser(name: string = 'Alex', lastname: string = 'Martins', image: string = '/assets/imgs/users/user-8.jpeg', email: string = 'alex.martins@example.com',phoneCode:string="",mobileNumber:string="", role:string="",password: string="",repeatpassword:string="") {
   // this sets a default user for the template
   this.loggedUser = new LoggedUserModel();
   this.loggedUser.name = name;
   this.loggedUser.lastname = lastname;
   this.loggedUser.image = image;
   this.loggedUser.email = email;
+  this.loggedUser.phoneCode = phoneCode;
+  this.loggedUser.mobileNumber = mobileNumber;
+  this.loggedUser.role =role;
   this.user = localStorage.getItem('USER_NAME');
 }
 
@@ -180,4 +317,8 @@ export class LoggedUserModel {
   name: string;
   lastname: string;
   email: string;
+  password:string;
+  phoneCode:string;
+  mobileNumber:string;
+  role:string
 }
