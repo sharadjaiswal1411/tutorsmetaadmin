@@ -63,7 +63,7 @@ export class RegisterComponent {
     console.log(this.registerForm.value);
     this.loading = true;
     //this.signin(data.email, data.password)
-
+    
 
     if(data.password!=data.repeatpassword)
     {
@@ -98,7 +98,7 @@ export class RegisterComponent {
   
           // setTimeout(window.location.href = 'http://localhost:4200/#/dashboard', 5000);
         }
-          if(res.result.data.roleId.name=="ADVISOR"){
+          if(res.result.data.roleId.name=="TEACHERS"){
             localStorage.setItem("Token_Daily_Neevesh", res.result.data.accessToken)
             localStorage.setItem("USER_Id", res.result.data._id)
             localStorage.setItem("USER_TYPE", res.result.data.roleId.name)
@@ -110,7 +110,7 @@ export class RegisterComponent {
                   this.router.navigate(['dashboards/ecommerce']);
                   console.log('responce',res);
           }
-          if(res.result.data.roleId.name=="USER"){
+          if(res.result.data.roleId.name=="STUDENT"){
             
             // this.dialog.open(AlertTemplateComponent, {
             //   data: {
@@ -269,15 +269,21 @@ register(name:string,email: string,phoneCode:string,mobileNumber:string, role:st
 
 
     // get role id
+    
   
       this.setUser();
-      console.log("hii",name);
-      return this.http.get<any>(environment.API_URL+'auth/test');
+  
     
+      let role_id: any,deviceType:any,deviceToken:any;
+      deviceType="125",
+      deviceToken="1285567890",
+      role_id=this.http.get<any>(environment.API_URL+'role/getroleid/'+role);
+      //return this.http.get<any>(environment.API_URL+'auth/test');
     
+      console.log("hiii",name,role_id);
     // display string message
 
-//  return this.http.post<any>(environment.API_URL+'auth/register',{name:name,email:email,phoneCode:phoneCode,mobileNumber:mobileNumber,roleId:role,password:password});
+ return this.http.post<any>(environment.API_URL+'auth/register',{name:name,email:email,phoneCode:phoneCode,mobileNumber:mobileNumber,roleId:role_id,password:password,deviceType:deviceType,deviceToken:deviceToken});
 
  
   // your log in logic should go here
