@@ -46,7 +46,6 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
 @NgModule({
   imports: [
     BrowserModule,

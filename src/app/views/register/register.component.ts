@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder, MaxLengthValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 //import { MatDialog } from '@angular/material/dialog';
 //import { AlertTemplateComponent } from '../../shared/alert-template/alert-template.component';
@@ -18,7 +18,8 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: 'register.component.html'
+  templateUrl: 'register.component.html',
+  styles: ['h1 { color:blue; } input.ng-invalid{border-left:0px solid red} input.ng-valid{border-left:0px solid grey} .error{color:red}']
 })
 export class RegisterComponent {
 
@@ -46,7 +47,7 @@ export class RegisterComponent {
       this.registerForm = fb.group({
         name: ["", Validators.required],
           email: ["", Validators.required
-          //,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)
+          ,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)
         ],
         phoneCode: ["", Validators.required],
         mobileNumber: ["", Validators.required],
@@ -57,6 +58,34 @@ export class RegisterComponent {
       //public router: Router
   }
 
+  get name(){
+    return this.registerForm.get('name')
+  }
+
+  get email(){
+    return this.registerForm.get('email')
+  }
+
+  get phoneCode(){
+    return this.registerForm.get('phoneCode')
+  }
+
+  get mobileNumber(){
+    return this.registerForm.get('mobileNumber')
+  }
+
+  get role(){
+    return this.registerForm.get('role')
+  }
+
+  
+  get password(){
+    return this.registerForm.get('password')
+  }
+
+  get repeatpassword(){
+    return this.registerForm.get('repeatpassword')
+  }
   onRegister(){
     console.log("regiiiii");
     const data = this.registerForm.value;
@@ -274,16 +303,17 @@ register(name:string,email: string,phoneCode:string,mobileNumber:string, role:st
       this.setUser();
   
     
-      let role_id: any,deviceType:any,deviceToken:any;
-      deviceType="125",
-      deviceToken="1285567890",
-      role_id=this.http.get<any>(environment.API_URL+'role/getroleid/'+role);
-      //return this.http.get<any>(environment.API_URL+'auth/test');
+      let deviceType:any,deviceToken:any;
+      deviceType="125";
+      deviceToken="1285567890";
+      // role_id=this.http.get<any>(environment.API_URL+'role/getroleid/'+role);
+      // //return this.http.get<any>(environment.API_URL+'auth/test');
     
-      console.log("hiii",name,role_id);
+      // console.log("hiii",name,role_id);
+      // console.log(this.http.get<any>(environment.API_URL+'role/getroleid/'+role))
     // display string message
 
- return this.http.post<any>(environment.API_URL+'auth/register',{name:name,email:email,phoneCode:phoneCode,mobileNumber:mobileNumber,roleId:role_id,password:password,deviceType:deviceType,deviceToken:deviceToken});
+     return this.http.post<any>(environment.API_URL+'auth/register',{name:name,email:email,phoneCode:phoneCode,mobileNumber:mobileNumber,roleId:role,password:password,deviceType:deviceType,deviceToken:deviceToken});
 
  
   // your log in logic should go here
