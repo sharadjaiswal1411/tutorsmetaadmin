@@ -7,6 +7,8 @@ import { TypographyComponent } from './typography.component';
 
 // Theme Routing
 import { ThemeRoutingModule } from './theme-routing.module';
+import { TeacherComponent } from './teacher.component';
+import { StudentComponent } from './student.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ThemeRoutingModule } from './theme-routing.module';
   ],
   declarations: [
     ColorsComponent,
-    TypographyComponent
+    TypographyComponent,
+    TeacherComponent,
+    StudentComponent
   ]
 })
 export class ThemeModule { }

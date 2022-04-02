@@ -15,14 +15,24 @@ export const navItems: INavData[] = [
     name: 'Theme'
   },
   {
+    name: 'User',
+    url: '/theme/typography',
+    icon: 'icon-pencil'
+  },
+  {
+    name: 'Teacher',
+    url: '/theme/teacher',
+    icon: 'icon-pencil'
+  },
+  {
+    name: 'Student',
+    url: '/theme/student',
+    icon: 'icon-pencil'
+  },
+  {
     name: 'Colors',
     url: '/theme/colors',
     icon: 'icon-drop'
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    icon: 'icon-pencil'
   },
   {
     title: true,
@@ -96,6 +106,77 @@ export const navItems: INavData[] = [
       }
     ]
   },
+
+
+  {
+    name: 'Courses',
+    url: '/courses',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Subject',
+        url: '/courses/subject',
+        icon: 'icon-puzzle'
+      },
+       {
+        name: 'Category',
+         url: '/courses/category',
+         icon: 'icon-puzzle'
+      },
+       {
+        name: 'Subcategory',
+        url: '/courses/subcategory',
+        icon: 'icon-puzzle'
+       },
+      {
+        name: 'Subsubcategory',
+        url: '/courses/subsubcategory',
+        icon: 'icon-puzzle'
+      },
+      // {
+      //   name: 'Navbars',
+      //   url: '/base/navbars',
+      //   icon: 'icon-puzzle'
+
+      // },
+      // {
+      //   name: 'Pagination',
+      //   url: '/base/paginations',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Popovers',
+      //   url: '/base/popovers',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Progress',
+      //   url: '/base/progress',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Switches',
+      //   url: '/base/switches',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Tables',
+      //   url: '/base/tables',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Tabs',
+      //   url: '/base/tabs',
+      //   icon: 'icon-puzzle'
+      // },
+      // {
+      //   name: 'Tooltips',
+      //   url: '/base/tooltips',
+      //   icon: 'icon-puzzle'
+      // }
+    ]
+  },
+
   {
     name: 'Buttons',
     url: '/buttons',
