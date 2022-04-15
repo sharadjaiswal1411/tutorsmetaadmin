@@ -12,8 +12,19 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'U s e r s'
   },
+  {
+    name: 'Teacher',
+    url: '/theme/colors',
+    icon: 'icon-user'
+  },
+  {
+    name: 'Student',
+    url: '/theme/colors',
+    icon: 'icon-user'
+  },
+ 
   {
     name: 'Colors',
     url: '/theme/colors',
@@ -26,8 +37,19 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Components'
+    name: 'C a t e g o r i e s'
   },
+  {
+    name: 'Courses',
+    url: '/base/cards',
+    icon: 'icon-layers',
+ 
+  }, 
+  {
+    name: 'Subject',
+    url: '/subject',
+    icon: 'icon-layers',
+  }, 
   {
     name: 'Base',
     url: '/base',
@@ -194,7 +216,12 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Extras',
+    name: 'M O R E',
+  },
+  {
+    name: 'Membership',
+    url: '/pages',
+    icon: 'icon-star',
   },
   {
     name: 'Pages',

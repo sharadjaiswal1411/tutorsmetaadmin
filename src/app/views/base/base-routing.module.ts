@@ -13,6 +13,7 @@ import { PopoversComponent } from './popovers.component';
 import { ProgressComponent } from './progress.component';
 import { TooltipsComponent } from './tooltips.component';
 import { NavbarsComponent } from './navbars/navbars.component';
+import { SubjectComponent } from './subject.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,13 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'cards'
+      },
+      {
+        path: 'subject',
+        component: SubjectComponent,
+        data: {
+          title: 'Subject'
+        }
       },
       {
         path: 'cards',

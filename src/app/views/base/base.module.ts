@@ -47,6 +47,7 @@ import { NavbarsComponent } from './navbars/navbars.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { SubjectComponent } from './subject.component';
 
 @NgModule({
   imports: [
@@ -74,7 +75,8 @@ import { BaseRoutingModule } from './base-routing.module';
     PopoversComponent,
     ProgressComponent,
     TooltipsComponent,
-    NavbarsComponent
+    NavbarsComponent,
+    SubjectComponent
   ]
 })
 export class BaseModule { }

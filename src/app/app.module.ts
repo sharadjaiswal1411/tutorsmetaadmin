@@ -45,6 +45,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SubjectComponent } from './views/subject/subject.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SubjectComponent
   ],
   providers: [
     {
