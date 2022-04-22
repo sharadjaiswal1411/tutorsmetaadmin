@@ -10,13 +10,20 @@ export class SubjectdataService {
 
   constructor(private http:HttpClient) { }
 
-  getSubjectData(current_page,per_page,search_text){
+  getSubjectData(current_page,per_page,search_text,status){
   
 if(search_text)
 {
   return this.http.get<any>(environment.API_URL+'subject'+'/?search_text='+search_text);
 }
-    return this.http.get<any>(environment.API_URL+'subject'+'/?current_page='+current_page+'/?per_page='+per_page+'/?search_text='+search_text);
+ 
+if(status)
+{
+  return this.http.get<any>(environment.API_URL+'subject'+'/?status='+status);
+}
+
+
+return this.http.get<any>(environment.API_URL+'subject'+'/?current_page='+current_page+'/?per_page='+per_page+'/?search_text='+search_text);
 
   }
 

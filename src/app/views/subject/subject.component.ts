@@ -54,7 +54,7 @@ per_page:number =20;          //totalLength
   current_page:number=1;    //page
   name:string="";
 email:string="";
-status:any;
+status="";
 
   constructor(private httpClient:HttpClient, public router: Router,private activerouter:ActivatedRoute,private subjectdataService:SubjectdataService){
 
@@ -64,7 +64,7 @@ status:any;
 
 getdata(){
 
-this.subjectdataService.getSubjectData(this.current_page,this.per_page,this.search_text).subscribe(data=>{
+this.subjectdataService.getSubjectData(this.current_page,this.per_page,this.search_text,this.status).subscribe(data=>{
     console.log("dataaaaaa",data.result.data.results);
     this.subjectData=data.result.data.results;
    this.meta = data.result.data.meta;
@@ -86,9 +86,6 @@ this.subjectdataService.getSubjectData(this.current_page,this.per_page,this.sear
   }
 
   
-searchstatus(status:any) {
-  console.log("status:",status);
-this.status=status;
 
 //   this.subjectdataService.getSubjectDataStatus(this.current_page,this.per_page,this.search_text,this.status)
 //.subscribe(data=>{
@@ -105,13 +102,17 @@ this.status=status;
 //   });
 
 
-}
+
 
 search(per_page=20){
   this.per_page=per_page;
   this.getdata()  
 }
-
+statuss(s,per_page=20){
+  this.per_page=per_page;
+  this.status=s;
+  this.getdata()  
+}
 
 previous(){
   if(this.current_page>1){  
