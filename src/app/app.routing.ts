@@ -8,6 +8,8 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { AddComponent } from './views/subject/add/add.component';
+import { EditComponent } from './views/subject/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +36,20 @@ export const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'add',
+    component: AddComponent,
+    data: {
+      title: 'Add Page'
+    }
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent,
+    data: {
+      title: 'Edit Page'
     }
   },
   {
@@ -65,6 +81,9 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      }, {
+        path: 'subject',
+        loadChildren: () => import('./views/subject/subject.module').then(m => m.SubjectModule)
       },
       {
         path: 'icons',

@@ -21,6 +21,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { AddComponent } from './views/subject/add/add.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
@@ -45,7 +46,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SubjectComponent } from './views/subject/subject.component';
 
 @NgModule({
   imports: [
@@ -74,8 +74,8 @@ import { SubjectComponent } from './views/subject/subject.component';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent,
-    SubjectComponent
+    RegisterComponent
+  //  SubjectComponent
   ],
   providers: [
     {
