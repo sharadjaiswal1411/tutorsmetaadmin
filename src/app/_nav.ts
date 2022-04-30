@@ -16,15 +16,60 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Teacher',
-    url: '/theme/colors',
+    url: '/teacher',
     icon: 'icon-user'
   },
   {
     name: 'Student',
-    url: '/theme/colors',
+    url: '/student',
     icon: 'icon-user'
   },
- 
+
+  {
+    title: true,
+    name: 'C a t e g o r i e s'
+  },
+  {
+    name: 'Category',
+    url: '/category',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Sub Category',
+    url: '/subcategory',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Class',
+    url: '/class',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Subject',
+    url: '/subject',
+    icon: 'icon-layers',
+  },
+  
+  {
+    divider: true
+  },
+  {
+    title: true,
+    name: 'M O R E',
+  },
+  {
+    name: 'Membership',
+    url: '/membership',
+    icon: 'icon-star',
+  },
+  
+  {
+    name: 'Login',
+    url: '/login',
+    icon: 'icon-star'
+  },
+
+   
   {
     name: 'Colors',
     url: '/theme/colors',
@@ -36,19 +81,10 @@ export const navItems: INavData[] = [
     icon: 'icon-pencil'
   },
   {
-    title: true,
-    name: 'C a t e g o r i e s'
-  },
-  {
     name: 'Courses',
     url: '/base/cards',
     icon: 'icon-layers',
  
-  }, 
-  {
-    name: 'Subject',
-    url: '/subject',
-    icon: 'icon-layers',
   }, 
   {
     name: 'Base',
@@ -140,6 +176,28 @@ export const navItems: INavData[] = [
       }
     ]
   },
+
+  {
+    name: 'Category',
+    url: '/category',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Sub Category',
+    url: '/subcategory',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Class',
+    url: '/class',
+    icon: 'icon-layers',
+  }, 
+  {
+    name: 'Subject',
+    url: '/subject',
+    icon: 'icon-layers',
+  },
+  
   {
     name: 'Charts',
     url: '/charts',
@@ -210,18 +268,6 @@ export const navItems: INavData[] = [
       variant: 'info',
       text: 'NEW'
     }
-  },
-  {
-    divider: true
-  },
-  {
-    title: true,
-    name: 'M O R E',
-  },
-  {
-    name: 'Membership',
-    url: '/pages',
-    icon: 'icon-star',
   },
   {
     name: 'Pages',

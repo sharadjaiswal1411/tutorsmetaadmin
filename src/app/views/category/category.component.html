@@ -1,0 +1,138 @@
+<router-outlet></router-outlet>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+
+    <a  class="btn btn-outline-warning my-2 my-sm-0" routerLink="/category/add"> + Add </a>
+
+
+
+  
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#"><h3>Filters:</h3></a>
+        </li>        
+
+
+        <li class="nav-item dropdown" dropdown>
+          <a id="sts link-dropdown" class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown"[innerHTML]="filterStatus">
+           
+             Status
+          </a>
+          <div id="your-dropdown" class="dropdown-menu" aria-labelledby="link-dropdown" *dropdownMenu>
+            <a class="dropdown-item"   (click)="statuss('active')">Active</a>
+            <a class="dropdown-item" (click)="statuss('inactive')">Inactive</a>
+            <!-- <div class="dropdown-divider"></div> -->
+            <a class="dropdown-item" (click)="statuss('')">Remove Filter</a>
+          </div>
+        </li>
+
+
+      </ul>
+
+      <!-- <form class="form-inline my-2 my-lg-0" novalidate (ngSubmit)="onSubmit()" #f="ngForm"  > -->
+<!-- 
+        <a  class="btn btn-INFO my-2 my-sm-0" routerLink="/subject/add"> ACTIVE </a>
+        <a  class="btn btn-outline-warning my-2 my-sm-0" routerLink="/subject/add"> INACTIVE </a> -->
+
+
+        <div class="input-group">
+          <input 
+          class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+         id="search-text" aria-describedby="search-text" 
+        autofocus
+       type="text" 
+           name="input2-group2" [(ngModel)]="search_text" (keyup)="search()"
+            ><span class="input-group-append" ><button (click)="search()" 
+              type="submit"
+              class="btn btn-outline-success my-2 my-sm-0"><i class="fa fa-search" ></i></button></span>
+          </div>
+
+
+       
+       
+
+
+
+      <!-- </form> -->
+    </div>
+  </nav>
+
+
+
+
+
+
+
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        Class
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead  align= " center">
+            <tr >
+              <th>S.No.</th>
+              <th>Name</th>
+           
+              <th>Status</th>
+
+              <th width="150px">Edit</th>
+              <th width="150px">Delete</th>
+            </tr>
+            <!-- <tr *ngFor="let subject of subjectData"><th>{{subject.name}}</th></tr> -->
+          </thead>
+          <tbody  align= " center">
+          
+            <tr *ngFor="let subject of subjectData
+            | paginate:{
+              itemsPerPage:20,
+              currentPage:current_page,
+              totalItems:totalrecord
+            };index as i ">
+              <td>
+                <p><code class="highlighter-rouge">{{i+1}}</code></p>
+              </td>
+              <td><span class="h5">{{subject.name}}</span></td>
+              <!-- <td><span class="h5">{{subject.subcategoryId.name}}</span></td> -->
+              <!-- <td><span class="h5">{{subject.subcategoryId.categoryId.name}}</span></td> -->
+
+              <td><span class="h6">{{subject.status}}</span></td>
+
+              <td> <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0" >
+                <button type="button" class="btn btn-block btn-success"  routerLink="/category/edit/{{subject._id}}" >
+                  <i class="icon-pencil icons font-2 "></i>
+                  Edit</button>
+              </div>
+        </td><td>
+              <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-danger" (click)="delete(subject._id)" >
+                  <i class="fa fa-trash-o icons font-2 "></i>
+                  Delete</button>
+              </div></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+ 
+
+    <div class="card-body navbar navbar-expand-lg navbar-light bg-light" >
+      <div class="row">
+        
+        <div class="col-xs-12 col-12">
+          <pagination-controls
+          class="pagi"
+          (pageChange)="changePage(current_page = $event)">
+          </pagination-controls> 
+
+   
+        </div>
+        </div>

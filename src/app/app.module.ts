@@ -21,7 +21,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { AddComponent } from './views/subject/add/add.component';
+//import { AddComponent } from './views/subject/add/add.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
@@ -46,6 +46,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+//import { MembershipComponent } from './views/membership/membership.component';
+//import { CategoryComponent } from './views/category/category.component';
+//import { SubcategoryComponent } from './views/subcategory/subcategory.component';
+//import { AddComponent } from './views/subcategory/add/add.component';
+//import { EditComponent } from './views/subcategory/edit/edit.component';
 
 @NgModule({
   imports: [
@@ -74,7 +79,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    //MembershipComponent,
+    //CategoryComponent,
+  //  SubcategoryComponent,
+    //AddComponent,
+  //  EditComponent
   //  SubjectComponent
   ],
   providers: [

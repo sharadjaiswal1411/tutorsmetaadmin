@@ -63,7 +63,8 @@ status="";
 
 
 getdata(){
-
+if(this.search_text)
+this.current_page=1;
 this.subjectdataService.getSubjectData(this.current_page,this.per_page,this.search_text,this.status).subscribe(data=>{
     console.log("dataaaaaa",data.result.data.results);
     this.subjectData=data.result.data.results;

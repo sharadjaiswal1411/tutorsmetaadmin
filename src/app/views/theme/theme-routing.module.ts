@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
+import { TeacherComponent } from '../teacher/teacher.component';
+import { StudentComponent } from '../student/student.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,20 @@ const routes: Routes = [
         component: ColorsComponent,
         data: {
           title: 'Colors'
+        }
+      },
+      {
+        path: 'teacher',
+        component: TeacherComponent,
+        data: {
+          title: 'Teacher'
+        }
+      },
+      {
+        path: 'student',
+        component: StudentComponent,
+        data: {
+          title: 'Student'
         }
       },
       {

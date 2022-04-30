@@ -81,9 +81,35 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
-      }, {
+      },
+       {
+        path: 'category',
+        loadChildren: () => import('./views/category/category.module').then(m => m.CategoryModule)
+      },
+       {
+        path: 'subcategory',
+        loadChildren: () => import('./views/subcategory/subcategory.module').then(m => m.SubcategoryModule)
+      },
+       {
         path: 'subject',
         loadChildren: () => import('./views/subject/subject.module').then(m => m.SubjectModule)
+      },
+      {
+        path: 'teacher',
+        loadChildren: () => import('./views/teacher/teacher.module').then(m => m.TeacherModule)
+      },
+      
+      {
+        path: 'student',
+        loadChildren: () => import('./views/student/student.module').then(m => m.StudentModule)
+      },
+      {
+        path: 'membership',
+        loadChildren: () => import('./views/membership/membership.module').then(m => m.MembershipModule)
+      }
+      ,{
+        path: 'class',
+        loadChildren: () => import('./views/class/class.module').then(m => m.ClassModule)
       },
       {
         path: 'icons',

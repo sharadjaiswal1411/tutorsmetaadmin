@@ -18,10 +18,10 @@ const routes: Routes = [
         redirectTo: 'subject'
       },
       {
-        path: 'subject',
+        path: '',
         component: SubjectComponent,
         data: {
-          title: 'Subject'
+          title: ''
         }
       },
       {
