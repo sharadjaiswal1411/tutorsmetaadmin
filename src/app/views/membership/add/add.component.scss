@@ -1,0 +1,16 @@
+h1{
+    color:blue
+}
+
+input.ng-invalid textarea.ng-invalid{
+    border-left: 5px solid red;
+    color: red;
+}
+
+input.ng-valid textarea.ng-valid{
+    border-left: 5px solid green;
+}
+
+.error{
+    color:red
+}

@@ -29,7 +29,7 @@ const routes: Routes = [
         component: AddComponent,
         data: {
           title: 'Add',
-          redirectTo: 'teacher/add'
+         // redirectTo: 'teacher/add'
         }
       },
       {

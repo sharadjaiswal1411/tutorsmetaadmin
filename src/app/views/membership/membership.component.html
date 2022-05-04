@@ -140,7 +140,17 @@
                 <p><code class="highlighter-rouge">{{i+1}}</code></p>
               </td>
               <td><span class="h5">{{subject.name}}</span></td>
-              <td><span class="h5">{{subject.image}}</span></td>
+              <td><span class="h5">
+                <img src="{{subject.image}}">
+                <!-- src={{url+advisors?.image}} -->
+                <img *ngIf="advisors?.image" class="card-img-top  border shadow "  src="{{subject.image}}"  alt="Card image cap" style="width: 70px;height: 70px;border-radius: 100%;margin: 20px;">
+
+                <img  *ngIf="!advisors?.image" class="card-img-top  border shadow " src='assets/icons/logos/no-image-available.png'  alt="Card image cap" style="width: 70px;height: 70px;border-radius: 100%;margin: 20px;">
+
+
+
+                
+                              </span></td>
               <!-- <td><span class="h5">{{subject.userid.gender}}</span></td> -->
               <td><span class="h5">{{subject.price}}</span></td>
               <!-- <td><span class="h5">{{subject.userid.phoneCode}} {{subject.userid.mobileNumber}}</span></td> -->

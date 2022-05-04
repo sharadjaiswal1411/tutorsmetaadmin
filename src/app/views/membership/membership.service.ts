@@ -16,6 +16,8 @@ console.log(headers);
 
 
 export class MembershipService {
+  addedSubject: addedSubjectModel;
+  user:any;
 
   constructor(private http:HttpClient) { }
 
@@ -108,4 +110,55 @@ console.log("stats");
   updateCurrentData(id,data){
     return this.http.put<any>(environment.API_URL+'membership/'+id,data,{headers});
   }
+imagedata:any
+  uploadImage(data){
+    this.imagedata=data;  
+
+    return this.http.post<any>(environment.API_URL+'file/upload',data)
+  //  ? return this.http.put<any>(environment.API_URL+'file/upload/'+data,{headers});
+  }
+
+  submit(name:string,status:string,description:string
+    ,image:string
+    ,metaDescription:string
+    ,metaTitle:string
+    ,price:string) {
+  
+      this.setSubject();
+      console.log(this.imagedata)
+      return this.http.post<any>(environment.API_URL+'membership/',{name:name,status:status,description:description,
+        image:image,
+        metaDescription:metaDescription,
+        metaTitle:metaTitle,
+        price:price},{headers});
+  }
+  
+
+  
+setSubject(name: string = 'Alex',status: string = 'ACTIVE') {
+  // this sets a default user for the template
+  this.addedSubject = new addedSubjectModel();
+  this.addedSubject.name = name;
+  this.addedSubject.status = status;
+  this.user = localStorage.getItem('USER_NAME');
+}
+
+
+  // uploadImage(formData:any): Observable<any> {
+  //   return this.http.post<any>(environment.API_URL+'file/upload',formData)
+  //     .pipe(
+  //       retry(1),
+  //       catchError(this.handleError)
+  //     );
+  // }
+
+}
+export class addedSubjectModel {
+  name: string
+  status:string
+  description:string
+  image:string
+  metaDescription:string
+  metaTitle:string
+  price:string
 }

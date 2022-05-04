@@ -3,7 +3,7 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
+// import{AlertTemplateComponent} 'ale'
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -63,7 +63,6 @@ email:string="";
 status="";
 subcategory:any;
 subcategoryid:any;
-
 category:any
   constructor(private httpClient:HttpClient, public router: Router,private activerouter:ActivatedRoute,private services:MembershipService){
 
@@ -112,9 +111,6 @@ this.services.getSubjectData(this.current_page,this.per_page,this.search_text,th
 //    this.totalrecord=data.result.data.meta.total_records;
 //  // console.log(this.totalPage);
 //   });
-
-
-
 
 search(per_page=20){
   this.per_page=per_page;
